@@ -1,7 +1,8 @@
-<nav>
-	<a href="/">Home</a>
-	<a href="/about">About</a>
-	<a href="/settings">Contact</a>
-</nav>
+<script lang="ts">
+	import '../app.css';
+	import MainMenu from "$lib/MainMenu.svelte";
+</script>
+
+<MainMenu></MainMenu>
 
 <slot></slot>
