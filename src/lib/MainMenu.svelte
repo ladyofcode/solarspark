@@ -70,11 +70,15 @@
 	.light svg path {
 		fill: green;
 	}
+	
 
 	nav {
 		position: fixed;
+		top: 0;
 		z-index: 80;
 		width: 100%;
+		background-color: var(--background);
+		border-bottom: 2px solid grey;
 	}
 
 	nav button {
