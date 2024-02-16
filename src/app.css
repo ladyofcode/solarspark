@@ -58,12 +58,12 @@ body {
     --text-dark: #464646;
     --text-light: #ffffff;
     --bg-light: #d9dfe7;
-        --bg-dark: #1b222c;
+    --bg-dark: #1b222c;
     --corner-radius: 4px;
     --box-shadow-light-highlight: hsla(0, 0%, 90%, 0.5);
     --box-shadow-light-shadow: rgba(139, 156, 182, 0.5);
-        --box-shadow-dark-highlight: hsla(216, 23%, 20%, 0.463);
-        --box-shadow-dark-shadow: hsl(215, 24%, 10%);
+    --box-shadow-dark-highlight: hsla(216, 23%, 20%, 0.463);
+    --box-shadow-dark-shadow: hsl(215, 24%, 10%);
     --transition-time: 2s ease-in;
 }
 
@@ -73,34 +73,34 @@ body {
     --item-highlight: var(--box-shadow-light-highlight);
     --item-shadow: var(--box-shadow-light-shadow);
     --box-container-shadow: inset 9px 9px 20px var(--item-shadow),
-            inset -8px -8px 16px var(--item-highlight);
-        --box-container-border-radius: 24px;
-        --box-container-bg-color: transparent;
-        --text-color: var(--text-dark);
-        --text-highlight: 0px -1px 1px rgba(0, 0, 0, 1);
-        --text-shadow: 0px 2px 1px rgba(255, 255, 255, 0.883);
-        --box-container-border: transparent;
-        --icon-color: #7e7e7e;
-        --image-frame-filter: none;
+        inset -8px -8px 16px var(--item-highlight);
+    --box-container-border-radius: 24px;
+    --box-container-bg-color: transparent;
+    --text-color: var(--text-dark);
+    --text-highlight: 0px -1px 1px rgba(0, 0, 0, 1);
+    --text-shadow: 0px 2px 1px rgba(255, 255, 255, 0.883);
+    --box-container-border: transparent;
+    --icon-color: #7e7e7e;
+    --image-frame-filter: none;
 }
 
 [data-theme='dark'] {
     --text-headings-color: var(--text-light);
     --background: var(--bg-dark);
     --item-shadow: transparent;
-        --item-highlight: transparent;
-        --text-headings-color: #a2beac;
-        --glow-color: hsl(141, 59%, 69%, 0.553);
-        --box-container-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
-            0px 0px 0.5em 0px var(--glow-color), -4px 4px 4px 2px hsla(137, 17%, 16%, 0.945);
-        --box-container-border-radius: 48px 8px 8px 8px;
-        --box-container-bg-color: hsla(141, 88%, 69%, 0.08);
-        --text-color: var(--text-light);
-        --text-highlight: transparent;
-        --text-shadow: transparent;
-        --box-container-border: 0.15em solid var(--glow-color);
-        --icon-color: #f4e1a3;
-        --image-frame-filter: brightness(20%) hue-rotate(350deg);
+    --item-highlight: transparent;
+    --text-headings-color: #a2beac;
+    --glow-color: hsl(141, 59%, 69%, 0.553);
+    --box-container-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+        0px 0px 0.5em 0px var(--glow-color), -4px 4px 4px 2px hsla(137, 17%, 16%, 0.945);
+    --box-container-border-radius: 48px 8px 8px 8px;
+    --box-container-bg-color: hsla(141, 88%, 69%, 0.08);
+    --text-color: var(--text-light);
+    --text-highlight: transparent;
+    --text-shadow: transparent;
+    --box-container-border: 0.15em solid var(--glow-color);
+    --icon-color: #f4e1a3;
+    --image-frame-filter: brightness(20%) hue-rotate(350deg);
 }
 
 body {
@@ -112,6 +112,7 @@ body,
 nav ul {
     transition: background-color var(--transition-time);
 }
+
 section {
     width: 100%;
 }
@@ -126,10 +127,10 @@ section {
     height: 16px;
     background-color: var(--background);
     box-shadow:
-            inset 9px 9px 20px var(--item-shadow),
-            inset -9px -9px 16px var(--item-highlight);
-        transition: background-color var(--transition-time);
-    }
+        inset 9px 9px 20px var(--item-shadow),
+        inset -9px -9px 16px var(--item-highlight);
+    transition: background-color var(--transition-time);
+}
 
 h1,
 h2,
@@ -142,9 +143,9 @@ h2 {
     text-transform: uppercase;
     margin-top: 1.6rem;
     text-shadow: var(--text-highlight), var(--text-shadow);
-    }
-    
-    h1 {
+}
+
+h1 {
     font-size: 2.4rem;
     line-height: 2.4rem;
     margin-bottom: 2.4rem;
@@ -198,8 +199,9 @@ iframe {
 
 @media (min-width: 800px) {
     .content {
-            padding: 0;
-        }
+        padding: 0;
+    }
+
     h1 {
         font-size: 4rem;
     }
@@ -207,11 +209,12 @@ iframe {
     h2 {
         font-size: 2.4rem;
     }
-.two-columns {
-    flex-direction: row;
-}
 
-.two-columns > div:first-of-type {
-    margin-right: 2.4rem;
-}
+    .two-columns {
+        flex-direction: row;
+    }
+
+    .two-columns > div:first-of-type {
+        margin-right: 2.4rem;
+    }
 }
