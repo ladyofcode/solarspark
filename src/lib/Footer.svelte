@@ -1,12 +1,12 @@
 <footer>
-    <div>
-        <h2>Something unstyled</h2>
-    </div>
+    <p>Site built with &hearts; by Tabs</p>
 </footer>
 
 <style>
     footer {
-        height: 200px;
-        background-color: grey;
+        text-align: center;
+        padding: 0.8rem;
+        color: var(--text-light);
+        background-color: var(--text-dark);
     }
 </style>
