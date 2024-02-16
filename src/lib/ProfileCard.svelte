@@ -1,15 +1,16 @@
 <script lang="ts">
 	import frame from '$lib/assets/images/DoorFrameLight.png';
 
-	export let portrait: string, name: string, skills:string;
+	export let portrait: string, name: string, skills: string;
 	export let twitch: string | undefined = undefined;
 	export let instagram: string | undefined = undefined;
 	export let twitter: string | undefined = undefined;
 	export let artstation: string | undefined = undefined;
 	export let site: string | undefined = undefined;
+	export let tumblr: string | undefined = undefined;
 </script>
 
-<div class="profile-card">
+<div class="profile-card box">
 	<div class="portrait-container">
 		<img class="portrait" src={portrait} alt="" />
 		<img class="moulding" src={frame} alt="" />
@@ -49,6 +50,12 @@
 					</svg>
 				</a>
 			{/if}
+			{#if tumblr}
+				<a href={tumblr} aria-label="View Tumblr page">
+					<title>Tumbolr icon</title>
+					<svg width="20" height="20" viewBox="0 0 50 50">    <path d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M30.65,18 c0.19,0,0.35,0.17,0.35,0.37v4.26c0,0.2-0.16,0.37-0.35,0.37H26c0,0,0,7.98,0,8.19c0,0.2,0.18,2.69,2.78,2.69 c2.15,0,3.67-1.14,3.69-1.15c0.05-0.04,0.12-0.06,0.18-0.06s0.12,0.02,0.17,0.05C32.93,32.78,33,32.9,33,33.03v3.7 c0,0.1-0.04,0.2-0.12,0.26C32.79,37.08,30.32,39,25.25,39C19.17,39,19,32.1,19,31.31V23h-2.65C16.16,23,16,22.85,16,22.65v-3.57 c0-0.15,0.09-0.28,0.22-0.33c0.06-0.02,5.5-2.19,5.5-7.41c0-0.2,0.15-0.36,0.34-0.36L25.65,11c0.19,0,0.35,0.16,0.35,0.35V18H30.65z"/></svg>
+				</a>
+			{/if}
 			{#if artstation}
 				<a href={artstation} aria-label="View Art Station page">
 					<title>Art station icon</title>
@@ -74,6 +81,9 @@
 </div>
 
 <style>
+	svg {
+		fill: var(--icon-color);
+	}
 	.profile-card {
 		display: flex;
 		flex-direction: column;
@@ -81,7 +91,8 @@
 		text-align: center;
 		height: 100%;
 		width: 100%;
-		max-width: 200px;
+		margin-bottom: 1.6rem;
+		padding: 1.6rem;
 	}
 	.portrait-container {
 		position: relative;
@@ -91,21 +102,31 @@
 	}
 	.moulding {
 		width: 100%;
-		/* max-width: 240px; */
 		position: absolute;
 		top: 0;
+		filter: var(--image-frame-filter);
+		transition: filter var(--transition-time);
 	}
 	.portrait {
 		border-radius: 50%;
-		padding: 10%;
-        margin-top: 5%;
+		padding: 14%;
+		margin: 0 auto;
 	}
 	.socials {
+		margin: 0 auto;
+		width: fit-content;
 		display: flex;
 		flex-direction: row;
 	}
 
 	.socials a {
 		margin-right: 0.4rem;
+	}
+
+	@media (min-width: 600px) {
+		.profile-card {
+			max-width: 220px;
+			margin-right: 1.6rem;
+		}
 	}
 </style>

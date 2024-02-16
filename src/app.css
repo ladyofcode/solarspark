@@ -53,39 +53,65 @@ html,
 body {
     height: 100%;
 }
+
 :root {
     --text-dark: #464646;
     --text-light: #ffffff;
-    --bg-light: #D9DFE7;
-    --bg-dark: grey;
-    --text-highlight: 0px -1px 1px rgba(0, 0, 0, 1);
-    --text-shadow: 0px 2px 1px rgba(255, 255, 255, 0.883);
+    --bg-light: #d9dfe7;
+        --bg-dark: #1b222c;
     --corner-radius: 4px;
     --box-shadow-light-highlight: hsla(0, 0%, 90%, 0.5);
-        --box-shadow-light-shadow: rgba(139, 156, 182, 0.5);
+    --box-shadow-light-shadow: rgba(139, 156, 182, 0.5);
         --box-shadow-dark-highlight: hsla(216, 23%, 20%, 0.463);
         --box-shadow-dark-shadow: hsl(215, 24%, 10%);
+    --transition-time: 2s ease-in;
 }
 
-[data-theme="light"] {
+[data-theme='light'] {
     --text-headings-color: var(--text-dark);
     --background: var(--bg-light);
     --item-highlight: var(--box-shadow-light-highlight);
-        --item-shadow: var(--box-shadow-light-shadow);
-        /* background-color: var(--bg-light); */
+    --item-shadow: var(--box-shadow-light-shadow);
+    --box-container-shadow: inset 9px 9px 20px var(--item-shadow),
+            inset -8px -8px 16px var(--item-highlight);
+        --box-container-border-radius: 24px;
+        --box-container-bg-color: transparent;
+        --text-color: var(--text-dark);
+        --text-highlight: 0px -1px 1px rgba(0, 0, 0, 1);
+        --text-shadow: 0px 2px 1px rgba(255, 255, 255, 0.883);
+        --box-container-border: transparent;
+        --icon-color: #7e7e7e;
+        --image-frame-filter: none;
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
     --text-headings-color: var(--text-light);
     --background: var(--bg-dark);
-        /* background-color: var(--bg-dark); */
+    --item-shadow: transparent;
+        --item-highlight: transparent;
+        --text-headings-color: #a2beac;
+        --glow-color: hsl(141, 59%, 69%, 0.553);
+        --box-container-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+            0px 0px 0.5em 0px var(--glow-color), -4px 4px 4px 2px hsla(137, 17%, 16%, 0.945);
+        --box-container-border-radius: 48px 8px 8px 8px;
+        --box-container-bg-color: hsla(141, 88%, 69%, 0.08);
+        --text-color: var(--text-light);
+        --text-highlight: transparent;
+        --text-shadow: transparent;
+        --box-container-border: 0.15em solid var(--glow-color);
+        --icon-color: #f4e1a3;
+        --image-frame-filter: brightness(20%) hue-rotate(350deg);
 }
 
 body {
-    background-color: var(--bg-light);
+    background-color: var(--background);
     font-family: 'Maven Pro', sans-serif;
 }
 
+body,
+nav ul {
+    transition: background-color var(--transition-time);
+}
 section {
     width: 100%;
 }
@@ -99,16 +125,23 @@ section {
     width: 100%;
     height: 16px;
     background-color: var(--background);
-    box-shadow: inset 9px 9px 20px var(--item-shadow), inset -9px -9px 16px var(--item-highlight);
+    box-shadow:
+            inset 9px 9px 20px var(--item-shadow),
+            inset -9px -9px 16px var(--item-highlight);
+        transition: background-color var(--transition-time);
+    }
 
+h1,
+h2,
+h3 {
+    color: var(--text-headings-color);
 }
+
 h1,
 h2 {
     text-transform: uppercase;
     margin-top: 1.6rem;
-        color: var(--text-headings-color);
-        text-shadow: var(--text-highlight),
-            var(--text-shadow);
+    text-shadow: var(--text-highlight), var(--text-shadow);
     }
     
     h1 {
@@ -124,26 +157,49 @@ h2 {
 p {
     margin-bottom: 1rem;
     line-height: 1.6rem;
+    color: var(--text-color);
 }
 
+iframe {
+    border-radius: var(--corner-radius);
+}
 
+.box {
+    background-color: var(--box-container-bg-color);
+    border: var(--box-container-border);
+    border-radius: var(--box-container-border-radius);
+    box-shadow: var(--box-container-shadow);
+}
 
-.content {
-    margin: 4rem auto;
+.container {
+    padding: 3.2rem 1.6rem;
     width: 100%;
     max-width: 800px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: 1.6rem auto;
 }
 
-.container {
-    margin: 0 auto;
+.container > h2:first-child {
+    margin-top: 0;
+    margin-bottom: 1.6rem;
+}
+
+.two-columns {
+    display: flex;
+    flex-direction: column;
+}
+
+.two-columns > div {
+    height: 100%;
     width: 100%;
-    max-width: 800px;
 }
 
 @media (min-width: 800px) {
+    .content {
+            padding: 0;
+        }
     h1 {
         font-size: 4rem;
     }
@@ -151,4 +207,11 @@ p {
     h2 {
         font-size: 2.4rem;
     }
+.two-columns {
+    flex-direction: row;
+}
+
+.two-columns > div:first-of-type {
+    margin-right: 2.4rem;
+}
 }

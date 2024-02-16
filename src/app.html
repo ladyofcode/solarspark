@@ -13,15 +13,6 @@
 </head>
 
 <body data-sveltekit-preload-data="hover">
-	<script>
-		// Set color mode based on user's preferred color scheme.
-		const darkMode = sessionStorage.getItem("darkMode");
-		if (null !== darkMode) {
-			document.body.classList.add(
-				darkMode === "true" ? "dark" : "light"
-			);
-		}
-	</script>
 	<div style="display: contents">%sveltekit.body%</div>
 </body>
 

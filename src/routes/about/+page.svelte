@@ -43,37 +43,30 @@
 			portrait={natalie}
 			name="Natalie"
 			skills="3D & design"
-			twitch="https://twitch.tv/ladyofcode"
-			twitter="https://twitter.com/ladyofcode"
-			instagram="https://instagram.com/ladyofcode"
-			site="https://ladyofcode.com"
+			twitch="https://www.twitch.tv/dotterine_"
+			twitter="https://twitter.com/Dotterine"
+			instagram="https://www.instagram.com/dotterine"
+			artstation="https://dotterine.artstation.com/"
 		/>
 		<ProfileCard
 			portrait={sachi}
 			name="Sachi"
 			skills="Writing"
-			twitch="https://twitch.tv/ladyofcode"
-			twitter="https://twitter.com/ladyofcode"
-			instagram="https://instagram.com/ladyofcode"
-			site="https://ladyofcode.com"
+			instagram="https://instagram.com/shipperboi_sketches"
+			tumblr="https://tumblr.com/shipperboi"
 		/>
 		<ProfileCard
 			portrait={miles}
 			name="Miles"
 			skills="Dev"
-			twitch="https://twitch.tv/ladyofcode"
-			twitter="https://twitter.com/ladyofcode"
-			instagram="https://instagram.com/ladyofcode"
-			site="https://ladyofcode.com"
+			twitter="https://twitter.com/Zstor2"
 		/>
 		<ProfileCard
 			portrait={sparticus}
 			name="Sparticus"
 			skills="Art"
-			twitch="https://twitch.tv/ladyofcode"
-			twitter="https://twitter.com/ladyofcode"
-			instagram="https://instagram.com/ladyofcode"
-			site="https://ladyofcode.com"
+			twitter="https://twitter.com/sparticus20001"
+			instagram="https://instagram.com/sparticus2000"
 		/>
 	</div>
 </section>
@@ -81,5 +74,15 @@
 <style>
 	#cards {
 		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+	}
+
+	@media (min-width: 600px) {
+		#cards {
+			flex-direction: row;
+		}
 	}
 </style>

@@ -2,42 +2,32 @@
 	import { onMount } from 'svelte';
 
 	function colorSchemeToggle(mode: boolean) {
-		console.log('hello!');
 		const theme = mode ? 'dark' : 'light';
 		document.documentElement.dataset.theme = theme;
 		document.cookie = `siteTheme=${theme};max-age=31536000;path="/";SameSite=Strict`;
 	}
 
-	let cookie: string | undefined;
-	let preferredSchemeDark: boolean | undefined;
+	let cookie: boolean | undefined;
+	let preferredSchemeDark: boolean | null;
 
 	onMount(() => {
-		cookie = document.cookie
-			.split('; ')
-			.find((row) => row.startsWith('dark'))
-			?.split('=')[1];
-		console.log('cookie: ', cookie);
-
-		const hasUserSetDarkModeManually = document.documentElement.dataset.theme == 'dark';
-
+		cookie = document.cookie.includes("dark");
+		const userSetDarkModeManually = document.documentElement.dataset.theme == 'dark';
+		const userSetLightModeManually = document.documentElement.dataset.theme == 'light';
+		
 		preferredSchemeDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-		if (!hasUserSetDarkModeManually) {
-			colorSchemeToggle(preferredSchemeDark ? true : false);
+		if (userSetDarkModeManually || preferredSchemeDark) {
+			colorSchemeToggle(true);
+		}
+
+		if (userSetLightModeManually || !preferredSchemeDark) {
+			colorSchemeToggle(false);
 		}
 	});
 
-	let darkMode: boolean;
+	$: darkMode = cookie ? true : false;
 
-	if (cookie) {
-		console.log('darkmode!');
-		darkMode = true;
-	} else {
-		console.log('lightmode!');
-		darkMode = false;
-	}
-
-	// $: colorSchemeToggle(darkMode);
 </script>
 
 <nav>
@@ -45,11 +35,10 @@
 		<li><a href="/">Home</a></li>
 		<li><a href="/whalefall">Whale Fall</a></li>
 		<li><a href="/about">About</a></li>
-		<li><a href="/contact">Contact</a></li>
+		<!-- <li><a href="/contact">Contact</a></li> -->
 		<li>
 			<button
 				id="dark-mode-toggle"
-				class={darkMode ? 'dark' : 'light'}
 				on:click={() => colorSchemeToggle((darkMode = !darkMode))}
 			>
 				<svg viewBox="0 0 114.1 122.88">
@@ -64,14 +53,11 @@
 </nav>
 
 <style>
-	.dark svg path{
-		fill: red;
-	}
 
-	.light svg path {
-		fill: green;
-	}
-	
+	button svg path {
+		fill: var(--icon-color);
+    transition: fill 2s ease-in;
+	}	
 
 	nav {
 		position: fixed;
@@ -79,7 +65,6 @@
 		z-index: 80;
 		width: 100%;
 		background-color: var(--background);
-		border-bottom: 2px solid grey;
 	}
 
 	nav button {
